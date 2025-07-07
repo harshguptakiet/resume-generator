@@ -20,7 +20,7 @@ This is a simple AI-powered resume summary generator built using **Streamlit** a
 ## 🛠️ Tech Stack
 
 - Python 🐍
-- Streamlit 🎈
+- Streamlit 
 - Google Generative AI (Gemini API) 🧠
 - Git & GitHub 🌐
 
