@@ -1,26 +1,61 @@
-
 import streamlit as st
-from api import generate_resume_summary  # 👈 importing from api.py
+import pandas as pd
+from api import generate_resume_summary  
 
-st.title(" AI Resume Builder")
+st.set_page_config(page_title="AI Resume Builder", layout="centered")
 
+# --- Sidebar Navigation ---
+st.sidebar.title("📂 Navigation")
+page = st.sidebar.radio("Go to", ["Resume Form", "Dashboard", "Upload"])
 
-name = st.text_input("Full Name")
-email = st.text_input("Email")
-phone = st.text_input("Phone Number")
-skills = st.text_area("Skills (comma separated)")
-experience = st.text_area("Work Experience")
+# --- Resume Form Page ---
+if page == "Resume Form":
+    st.title("🧠 AI Resume Builder - Resume Form")
 
+    name = st.text_input("Full Name")
+    email = st.text_input("Email")
+    phone = st.text_input("Phone Number")
+    skills = st.text_area("Skills (comma separated)")
+    experience = st.text_area("Work Experience")
 
+    if st.button("Generate Resume Summary"):
+        if name and skills and experience:
+            with st.spinner("Generating summary..."):
+                summary = generate_resume_summary(name, email, phone, skills, experience)
+            st.success("✅ Your Summary:")
+            st.markdown(summary)
+        else:
+            st.warning("Please fill all the required fields.")
 
+# --- Dashboard Page ---
+elif page == "Dashboard":
+    st.title("📊 Dashboard Overview")
 
-if st.button("Generate Resume Summary"):
-    if name and skills and experience:
-        with st.spinner("Generating summary..."):
-            summary = generate_resume_summary(name, email, phone, skills, experience)
-        st.success("✅ Your Summary:")
-        st.markdown (summary)
-        st.write(summary)
-        
-    else:
-        st.warning("Please fill all the required fields.")
+    # Metrics
+    col1, col2, col3 = st.columns(3)
+    col1.metric("Total Resumes", "120")
+    col2.metric("PDFs Generated", "98")
+    col3.metric("Pending Reviews", "5")
+
+    st.markdown("---")
+
+    # Chart
+    st.subheader("📈 Resume Processing Stats")
+    data = pd.DataFrame({
+        "Status": ["Uploaded", "Generated", "Pending"],
+        "Count": [120, 98, 5]
+    })
+    st.bar_chart(data.set_index("Status"))
+
+# --- Upload Page ---
+elif page == "Upload":
+    st.title("📤 Upload Resume")
+    uploaded_file = st.file_uploader("Upload your resume (PDF or DOCX)", type=["pdf", "docx"])
+
+    if uploaded_file is not None:
+        st.success(f"✅ '{uploaded_file.name}' uploaded successfully.")
+        st.info("Processing will be added in next phase.")
+
+# --- Footer ---
+st.markdown("---")
+st.caption("Internship Project — AI Resume Builder")
