@@ -1,4 +1,3 @@
-# api.py
 import streamlit as st
 import google.generativeai as genai
 
@@ -6,7 +5,7 @@ genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 for model in genai.list_models():
     print(model.name)
 
-def generate_resume_summary(name, email, phone, skills, experience):
+def generate_resume_summary(name, email, phone, skills, experience , linkedin , Github , Projects):
     prompt = f"""
   
 Create a professional resume using the details below. Include the following sections in the output:
@@ -22,12 +21,16 @@ Email: {email}
 Phone: {phone}
 Skills: {skills}
 Experience: {experience}
+linkedin: {linkedin}
+Github: {Github}
+Projects : {Projects}
+
 
 Format the resume cleanly using markdown.
 """
 
 
-    model = genai.GenerativeModel(model_name="models/gemini-1.5-flash")  # or "models/gemini-pro"
+    model = genai.GenerativeModel(model_name="models/gemini-1.5-flash") 
 
 
     response = model.generate_content(prompt)

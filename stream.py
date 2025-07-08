@@ -4,11 +4,11 @@ from api import generate_resume_summary
 
 st.set_page_config(page_title="AI Resume Builder", layout="centered")
 
-# --- Sidebar Navigation ---
-st.sidebar.title("📂 Navigation")
-page = st.sidebar.radio("Go to", ["Resume Form", "Dashboard", "Upload"])
 
-# --- Resume Form Page ---
+st.sidebar.title("📂 Navigation")
+page = st.sidebar.radio("Go to", ["Resume Form", "Dashboard", "ATS Checker"])
+
+
 if page == "Resume Form":
     st.title("🧠 AI Resume Builder - Resume Form")
 
@@ -17,11 +17,14 @@ if page == "Resume Form":
     phone = st.text_input("Phone Number")
     skills = st.text_area("Skills (comma separated)")
     experience = st.text_area("Work Experience")
+    linkedin = st.text_input("linkedin")
+    Github = st.text_input("github")
+    Projects = st.text_area("projects")
 
     if st.button("Generate Resume Summary"):
         if name and skills and experience:
             with st.spinner("Generating summary..."):
-                summary = generate_resume_summary(name, email, phone, skills, experience)
+                summary = generate_resume_summary(name, email, phone, skills, experience , linkedin,projects)
             st.success("✅ Your Summary:")
             st.markdown(summary)
         else:
