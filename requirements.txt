@@ -4,3 +4,5 @@ pandas
 fpdf
 docx2txt
 PyPDF2
+fpdf2>=2.7.4
+python-dotenv

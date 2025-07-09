@@ -3,7 +3,8 @@ from api import generate_resume_summary
 from fpdf import FPDF
 import io
 
-FONT_PATH = r"C:\Users\chhavi bhalla\OneDrive\Desktop\resumeresume\DejaVuSans.ttf"
+FONT_PATH = "DejaVuSans.ttf"
+
 
 class ResumePDF(FPDF):
     def header(self):
@@ -79,7 +80,7 @@ def show():
     summary = ""
     pdf_buffer = None
 
-    if st.button("🧠 Generate Resume Summary"):
+    if st.button(" Generate Resume Summary"):
         if all([
             name.strip(), email.strip(), phone.strip(), skills.strip(),
             experience.strip(), linkedin.strip(), github.strip(),
@@ -91,7 +92,7 @@ def show():
                         name, email, phone, skills, experience,
                         linkedin, github, projects, education
                     )
-                    st.success("✅ Summary generated!")
+                    st.success(" Summary generated!")
                     st.markdown(summary)
                 except Exception as e:
                     st.error(f" Gemini API Error: {e}")
@@ -126,7 +127,7 @@ def show():
             "skills": ["HTML", "CSS", "Python", "C++", "Git"],
             "experience": "Intern - Web Development, IGDTUW (2024)",
             "projects": "She Sync - menstrual tracker app using HTML/CSS. Created responsive UI and logic.",
-            "education": "IGDTUW - B.Tech CSE (2024–2028), SDVM - CBSE (2024, 96%)"
+            "education": "IGDTUW - B.Tech CSE (2024 2028), SDVM - CBSE (2024, 96%)"
         }
         pdf_buffer = create_resume_pdf(resume_data)
 
