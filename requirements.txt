@@ -3,3 +3,4 @@ google-generativeai
 pandas
 fpdf
 docx2txt
+PyPDF2
