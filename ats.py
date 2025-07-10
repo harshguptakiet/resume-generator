@@ -10,7 +10,7 @@ import PyPDF2
 import re
 from io import StringIO
 
-# Helper: Extract text from uploaded resume file
+
 def extract_text_from_resume(uploaded_file):
     text = ""
     if uploaded_file is not None:
@@ -25,7 +25,6 @@ def extract_text_from_resume(uploaded_file):
     return text
 
 
-# Helper: Calculate keyword match % (basic version)
 def keyword_match_score(resume_text, job_description):
     resume_words = set(re.findall(r'\b\w+\b', resume_text.lower()))
     job_words = set(re.findall(r'\b\w+\b', job_description.lower()))
@@ -34,7 +33,7 @@ def keyword_match_score(resume_text, job_description):
     return round(score, 2), matched_keywords
 
 
-# Main ATS Checker function
+
 def show():
     st.title("ATS Resume Checker")
     st.write("Upload your resume and paste the job description to get a match score.")

@@ -97,7 +97,7 @@
 #                 except Exception as e:
 #                     st.error(f" Gemini API Error: {e}")
 #         else:
-#             st.warning("⚠️ Please fill all fields.")
+#             st.warning(" Please fill all fields.")
 
     
 #     if summary:
@@ -135,7 +135,7 @@
 #         st.download_button(
 #             label="⬇️ Download Resume PDF",
 #             data=pdf_buffer,
-#             file_name="resume_chhavi.pdf",
+#             file_name="resume_chha.pdf",
 #             mime="application/pdf"
 #         )
 #         st.success(" Resume ready! Click to download.")
@@ -240,9 +240,9 @@ def show():
                     st.success("✅ Summary generated!")
                     st.markdown(summary)
                 except Exception as e:
-                    st.error(f"❌ Gemini API Error: {e}")
+                    st.error(f" Gemini API Error: {e}")
         else:
-            st.warning("⚠️ Please fill all fields.")
+            st.warning(" Please fill all fields.")
 
     if summary:
         resume_data = {
@@ -279,7 +279,7 @@ def show():
         st.download_button(
             label="⬇️ Download Resume PDF",
             data=pdf_buffer,
-            file_name="resume_chhavi.pdf",
+            file_name="resume.pdf",
             mime="application/pdf"
         )
         st.success("🎉 Resume ready! Click to download.")
