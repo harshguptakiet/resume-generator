@@ -262,16 +262,16 @@ def show():
     # Manual fallback data
     if not summary:
         resume_data = {
-            "name": "Chhavi Bhalla",
-            "email": "bhallachhavi007@gmail.com",
-            "phone": "8708300000",
-            "linkedin": "https://linkedin.com/in/chhaviibhalla",
-            "github": "https://github.com/chhavibhalla",
+            "name": "enter name",
+            "email": "enter email",
+            "phone": "8708XXXXX",
+            "linkedin": "https://linkedin.com",
+            "github": "https://github.com/",
             "summary": "Motivated B.Tech student with experience in HTML/CSS and a passion for technology.",
             "skills": ["HTML", "CSS", "Python", "C++", "Git"],
-            "experience": "Intern - Web Development, IGDTUW (2024)",
-            "projects": "She Sync - menstrual tracker app using HTML/CSS. Created responsive UI and logic.",
-            "education": "IGDTUW - B.Tech CSE (2024–2028), SDVM - CBSE (2024, 96%)"
+            "experience": "Intern ///",
+            "projects": "add project",
+            "education": "add education"
         }
         pdf_buffer = create_resume_pdf(resume_data)
 
