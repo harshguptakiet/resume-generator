@@ -14,9 +14,6 @@ This is a simple AI-powered resume summary generator built using **Streamlit** a
 
 ---
 
-
----
-
 ## 🛠️ Tech Stack
 
 - Python 🐍
@@ -32,3 +29,5 @@ This is a simple AI-powered resume summary generator built using **Streamlit** a
 ```bash
 git clone https://github.com/chhavibhalla/ai-resume-builder.git
 cd ai-resume-builder
+
+
