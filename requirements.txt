@@ -7,3 +7,4 @@ PyPDF2
 fpdf2>=2.7.4
 python-dotenv
 streamlit-option-menu
+firebase-admin
