@@ -1,4 +1,12 @@
 import streamlit as st
+
+# --- Page Configuration (MUST BE FIRST) ---
+st.set_page_config(
+    page_title="Resumely - AI Resume Toolkit",
+    page_icon="📄",
+    layout="wide"
+)
+
 from streamlit_option_menu import option_menu
 
 # Import your page modules
@@ -8,13 +16,6 @@ import dashboard
 import ats
 import auth
 import profile # Import the new profile module
-
-# --- Page Configuration ---
-st.set_page_config(
-    page_title="Resumely - AI Resume Toolkit",
-    page_icon="📄",
-    layout="wide"
-)
 
 # A dictionary to map page names to their corresponding functions
 PAGES = {

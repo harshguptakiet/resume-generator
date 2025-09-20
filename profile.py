@@ -8,14 +8,14 @@ def show():
     st.markdown("---")
 
     if 'uid' not in st.session_state:
-        st.error("Could not identify user. Please sign in again.")
+        st.info("🔒 Profile features require authentication. For now, you can use other features without signing in.")
         return
 
     uid = st.session_state['uid']
     profile_data = get_user_profile(uid)
 
     if not profile_data:
-        st.warning("Could not load profile data. Please try again.")
+        st.info("📝 Profile data not available. You can still use the resume builder and other features!")
         return
 
     # --- Main Layout: Two Columns ---
