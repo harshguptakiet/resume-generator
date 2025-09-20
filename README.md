@@ -8,9 +8,7 @@
 
 ---
 
-## 📸 Preview
 
-![AI Resume Builder Screenshot](https://github.com/chhavibhalla/ai-resume-builder/assets/screenshot-placeholder.png) <!-- Replace with actual screenshot link -->
 
 ---
 
@@ -56,8 +54,8 @@ python-dotenv
 🔧 Setup & Installation
 Clone the repository
 bash
-git clone https://github.com/chhavibhalla/ai-resume-builder.git
-cd ai-resume-builder
+git clone https://github.com/harshguptakiet/resume-generator.git
+cd resume-generator
 
 bash
 pip install -r requirements.txt
@@ -91,7 +89,7 @@ Visit 👉 https://resumely.streamlit.app
 🧑‍💻 Contributors
 Made with ❤️ by:
 
-Chhavi Bhalla
+Harsh Gupta
 
 Prateek 
 

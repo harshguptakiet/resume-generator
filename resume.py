@@ -118,16 +118,16 @@
 #     # Test mode / manual resume (for submission without form)
 #     if not summary:
 #         resume_data = {
-#             "name": "Chhavi Bhalla",
-#             "email": "bhallachhavi007@gmail.com",
-#             "phone": "8708300000",
-#             "linkedin": "https://linkedin.com/in/chhaviibhalla",
-#             "github": "https://github.com/chhavibhalla",
-#             "summary": "Motivated B.Tech student with experience in HTML/CSS and a passion for technology.",
+#             "name": "Your Name",
+#             "email": "your.email@example.com",
+#             "phone": "1234567890",
+#             "linkedin": "https://linkedin.com/in/yourprofile",
+#             "github": "https://github.com/yourusername",
+#             "summary": "Motivated professional with experience in technology and a passion for innovation.",
 #             "skills": ["HTML", "CSS", "Python", "C++", "Git"],
-#             "experience": "Intern - Web Development, IGDTUW (2024)",
-#             "projects": "She Sync - menstrual tracker app using HTML/CSS. Created responsive UI and logic.",
-#             "education": "IGDTUW - B.Tech CSE (2024 2028), SDVM - CBSE (2024, 96%)"
+#             "experience": "Your experience details here",
+#             "projects": "Your project descriptions here",
+#             "education": "Your education details here"
 #         }
 #         pdf_buffer = create_resume_pdf(resume_data)
 
