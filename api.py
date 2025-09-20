@@ -46,7 +46,7 @@ import streamlit as st
 import google.generativeai as genai
 
 # Configure Gemini API key securely from Streamlit secrets
-genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
+genai.configure(api_key=st.secrets["generativeai"]["GOOGLE_API_KEY"])
 
 def generate_resume_summary(
     name, email, phone, skills, experience,
