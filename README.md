@@ -65,6 +65,10 @@ Create the file .streamlit/secrets.toml and add:
 toml
 [generativeai]
 GOOGLE_API_KEY = "your_google_gemini_api_key"
+
+## 🔥 Firebase Setup (Optional)
+For user authentication and data persistence, follow the [Firebase Setup Guide](FIREBASE_SETUP.md).
+
 Or use .env if preferred:
 env
 GOOGLE_API_KEY=your_google_gemini_api_key
