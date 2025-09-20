@@ -8,9 +8,14 @@ import re
 
 
 # --- Firebase Initialization ---
-if not firebase_admin._apps:
-    cred = credentials.Certificate(dict(st.secrets["firebase_credentials"]))
-    firebase_admin.initialize_app(cred)
+try:
+    if not firebase_admin._apps:
+        cred = credentials.Certificate(dict(st.secrets["firebase_credentials"]))
+        firebase_admin.initialize_app(cred)
+    FIREBASE_AVAILABLE = True
+except Exception as e:
+    print(f"Firebase not available: {e}")
+    FIREBASE_AVAILABLE = False
 
 # --- Email Format Validator ---
 def is_valid_email(email):
@@ -22,18 +27,45 @@ def is_valid_email(email):
 
 def sign_up(email, password):
     """Creates a new user in Firebase Auth and a corresponding profile in Firestore."""
+    if not FIREBASE_AVAILABLE:
+        st.error("🔒 Authentication features require Firebase setup. Please follow the Firebase Setup Guide.")
+        return False
+    
     try:
         user = auth.create_user(email=email, password=password)
         # Create a profile in Firestore for the new user, which now includes a default name
         create_user_profile_if_not_exists(user.uid, user.email)
         st.success(f"Account created successfully for {user.email}! Please proceed to the Sign In tab.")
         return True
+    except auth.EmailAlreadyExistsError:
+        st.error("An account with this email already exists. Please try signing in instead.")
+        return False
     except Exception as e:
-        st.error(f"Error creating account: {e}")
+        error_message = str(e)
+        if "CONFIGURATION_NOT_FOUND" in error_message:
+            st.error("🚨 **Firebase Authentication Setup Required**")
+            st.info("""
+            **To enable user accounts, please complete these steps:**
+            
+            1. Go to [Firebase Console](https://console.firebase.google.com/)
+            2. Select your project: `resume-4036a`
+            3. Click **Authentication** → **Get started**
+            4. Go to **Sign-in method** tab
+            5. Enable **Email/Password** provider
+            6. Also enable **Firestore Database** if not already done
+            
+            Until then, you can still use all other features without signing in!
+            """)
+        else:
+            st.error(f"Error creating account: {error_message}")
         return False
 
 def sign_in(email, password):
     """Signs in a user and stores their email and UID in the session state."""
+    if not FIREBASE_AVAILABLE:
+        st.error("🔒 Authentication features require Firebase setup. Please follow the Firebase Setup Guide.")
+        return False
+    
     try:
         user = auth.get_user_by_email(email)
 
@@ -59,9 +91,15 @@ def sign_out():
 def show_auth_page():
     """Renders the unified Sign In / Sign Up page using tabs."""
     st.title("Welcome to Resumely")
-    st.write("Please sign in or create an account to continue.")
-
-
+    
+    if not FIREBASE_AVAILABLE:
+        st.warning("🔧 **Firebase Setup Required**: Authentication features are currently unavailable. Please follow the [Firebase Setup Guide](FIREBASE_SETUP.md) to enable user accounts.")
+        st.info("💡 **Good News**: You can still use the Resume Builder, ATS Checker, and other features without signing in!")
+        return
+    
+    # Check if Firebase Authentication is properly configured
+    st.info("🔐 **User Account Features Available** - Sign in or create an account to save your resumes and preferences!")
+    
     col1, col2, col3 = st.columns([1, 2, 1])
 
     with col2:
